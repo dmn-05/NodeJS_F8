@@ -5,6 +5,9 @@ const morgan = require('morgan');
 const { engine } = require('express-handlebars');
 const port = 3000;
 
+app.use(express.static(path.join(__dirname, 'public/css')));
+app.use(express.static(path.join(__dirname, 'public')));
+
 //HTTP logger
 app.use(morgan('combined'));
 
