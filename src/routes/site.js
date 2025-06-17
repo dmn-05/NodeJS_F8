@@ -6,6 +6,8 @@ const siteControllers = require('../app/controllers/SiteControllers');
 
 // Lưu ý phải xếp / dưới cuối vì nếu để đầu thì nó chạy / mà không chạy mấy cái dưới
 
+router.use('/selectDB', siteControllers.selectDB);
+
 // Gọi đến hàm search trong controller.
 router.use('/search', siteControllers.search);
 
