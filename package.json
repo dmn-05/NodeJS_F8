@@ -4,6 +4,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "nodemon --inspect src/index.js",
+    "beautiful": "lint-staged",
     "watch": "sass src/resources/scss:src/public/css --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -24,14 +25,20 @@
     "url": "https://github.com/dmn-05/NodeJS_F8/issues"
   },
   "homepage": "https://github.com/dmn-05/NodeJS_F8#readme",
+  "lint-staged": {
+    "src/**/*.{js,json,scss}": "prettier --single-quote --trailing-comma all --tab-width 4 --write"
+  },
   "description": "",
   "dependencies": {
     "express": "^5.1.0",
-    "express-handlebars": "^8.0.3",
-    "sass": "^1.89.2"
+    "express-handlebars": "^8.0.3"
   },
   "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.2",
     "morgan": "^1.10.0",
-    "nodemon": "^3.1.10"
+    "nodemon": "^3.1.10",
+    "prettier": "^3.5.3",
+    "sass": "^1.89.2"
   }
 }

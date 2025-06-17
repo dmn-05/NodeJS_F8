@@ -1,10 +1,10 @@
 //Lấy file news.js ra để lưu vào biến để thực hiện chuyển sang file news
-const newsRouter = require('./news')
+const newsRouter = require('./news');
 
 //Lấy file news.js ra để lưu vào biến để thực hiện chuyển sang file site
-const siteRouter = require('./site')
+const siteRouter = require('./site');
 
-function route(app){
+function route(app) {
     //Tổng Hợp các trường hợp nhánh
 
     //sử dụng nhánh url /new để chạy vào file news
@@ -26,8 +26,7 @@ function route(app){
     // app.get('/search', (req, res) => {
     //     res.render('search');
     // });
-
 }
 
 //Xuất (export) biến route ra bên ngoài để file khác có thể require() nó và sử dụng.
-module.exports =  route;
+module.exports = route;
