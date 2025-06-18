@@ -1,12 +1,17 @@
 //Lấy file news.js ra để lưu vào biến để thực hiện chuyển sang file news
 const newsRouter = require('./news');
 
+//Lấy file news.js ra để lưu vào biến để thực hiện chuyển sang file news
+const coursesRouter = require('./courses');
+
 //Lấy file news.js ra để lưu vào biến để thực hiện chuyển sang file site
 const siteRouter = require('./site');
 
 function route(app) {
     //Tổng Hợp các trường hợp nhánh
 
+    //sử dụng nhánh url /courses để chạy vào file news
+    app.use('/courses', coursesRouter);
     //sử dụng nhánh url /new để chạy vào file news
     app.use('/news', newsRouter);
 

@@ -11,13 +11,13 @@ const newsControllers = require('../app/controllers/NewsControllers');
 // Bất kỳ URL nào có dạng /news/something (VD: /news/abc, /news/123)
 // Tham số slug sẽ được lấy qua req.params.slug bên trong controller.
 // Gọi đến hàm show trong controller.
-router.use('/:slug', newsControllers.show);
+router.get('/:slug', newsControllers.show);
 
 // Khi /new/ sẽ chạy cái này
 // Route mặc định khi truy cập /news/
 // Gọi đến index() trong controller để xử lý.
 // VD: truy cập http://localhost:3000/news/ thì gọi index.
-router.use('/', newsControllers.index);
+router.get('/', newsControllers.index);
 
 // Xuất (export) biến router ra bên ngoài để file khác có thể require() nó và sử dụng.
 module.exports = router;

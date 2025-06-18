@@ -1,4 +1,5 @@
 const Course = require('../models/Course');
+const { multipleMongooseToObject } = require('../../util/mongoose');
 
 //Tổng hợp các hàm có chức năng dùng site
 class SiteControllers {
@@ -13,10 +14,14 @@ class SiteControllers {
     }
 
     //[GET] /selectDB
-    selectDB(req, res) {
+    selectDB(req, res, next) {
         Course.find({})
-            .then((courses) => res.json(courses))
-            .catch((err) => res.status(400).json({ error: 'ERROR!' }));
+            .then((courses) => {
+                res.render('selectDB', {
+                    courses: multipleMongooseToObject(courses),
+                });
+            })
+            .catch(next);
     }
 }
 

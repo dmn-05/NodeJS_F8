@@ -10,8 +10,7 @@ const db = require('./config/db');
 //connect to DB
 db.connect();
 
-app.use(express.static(path.join(__dirname, 'public/css')));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public', 'css')));
 
 app.use(
     express.urlencoded({
@@ -33,12 +32,12 @@ app.engine(
 app.set('view engine', 'hbs');
 
 //Set view folder
-app.set('views', path.join(__dirname, 'resources/views'));
+app.set('views', path.join(__dirname, 'resources', 'views'));
 
 // routes init
 // Khởi tạo tuyến đường route và truyền app vào
 route(app);
 
 app.listen(port, () => {
-    console.log(`Example app listening on port http://localhost:${port}`);
+    console.log(`App listening on port http://localhost:${port}`);
 });
