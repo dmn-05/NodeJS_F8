@@ -6,6 +6,12 @@ const coursesControllers = require('../app/controllers/CoursesControllers');
 
 // Lưu ý phải xếp / dưới cuối vì nếu để đầu thì nó chạy / mà không chạy mấy cái dưới
 
+// Khi /courses/create sẽ chạy cái này
+router.get('/create', coursesControllers.create);
+
+// Khi /courses/store sẽ chạy cái này
+router.post('/store', coursesControllers.store);
+
 // Khi /courses/:slug sẽ chạy cái này
 // Định nghĩa route động:
 // Bất kỳ URL nào có dạng /courses/something (VD: /news/abc, /news/123)

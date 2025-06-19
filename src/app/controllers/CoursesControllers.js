@@ -13,6 +13,22 @@ class CoursesControllers {
             })
             .catch(next);
     }
+
+    //[GET] courses/create
+    create(req, res, next) {
+        res.render('courses/create');
+    }
+
+    //[GET] courses/store
+    store(req, res, next) {
+        const formData = req.body;
+        formData.image = `https://i.ytimg.com/vi/${formData.video}/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLDGzeson_3R5LD5tdzOOJrSCLptew`;
+        const course = new Course(formData);
+        course
+            .save()
+            .then(() => res.redirect('/selectDB'))
+            .catch((err) => {});
+    }
 }
 
 //Xuất (export) NewControllers ra bên ngoài để file khác có thể require() nó và sử dụng.
