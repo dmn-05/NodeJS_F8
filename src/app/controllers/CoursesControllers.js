@@ -29,6 +29,24 @@ class CoursesControllers {
             .then(() => res.redirect('/selectDB'))
             .catch((err) => {});
     }
+
+    //[GET] courses/:id/edit
+    edit(req, res, next) {
+        Course.findById(req.params.id)
+            .then((courses) =>
+                res.render('courses/edit', {
+                    courses: mongooseToObject(courses),
+                }),
+            )
+            .catch(next);
+    }
+
+    //[PUT] courses/:id
+    update(req, res, next) {
+        Course.updateOne({ _id: req.params.id }, req.body)
+            .then(() => res.redirect('/me/stored/courses'))
+            .catch(next);
+    }
 }
 
 //Xuất (export) NewControllers ra bên ngoài để file khác có thể require() nó và sử dụng.

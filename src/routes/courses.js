@@ -6,6 +6,12 @@ const coursesControllers = require('../app/controllers/CoursesControllers');
 
 // Lưu ý phải xếp / dưới cuối vì nếu để đầu thì nó chạy / mà không chạy mấy cái dưới
 
+// Khi /courses/:id/edit sẽ chạy cái này
+router.get('/:id/edit', coursesControllers.edit);
+
+// Khi /courses/:id sẽ chạy cái này
+router.put('/:id', coursesControllers.update);
+
 // Khi /courses/create sẽ chạy cái này
 router.get('/create', coursesControllers.create);
 
