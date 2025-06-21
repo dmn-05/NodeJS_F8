@@ -47,6 +47,15 @@ class CoursesControllers {
             .then(() => res.redirect('/me/stored/courses'))
             .catch(next);
     }
+
+    //[PUT] courses/:id
+    destroy(req, res, next) {
+        Course.deleteOne({ _id: req.params.id })
+            .then(() =>
+                res.redirect(req.header('Referer') || '/me/stored/courses'),
+            )
+            .catch(next);
+    }
 }
 
 //Xuất (export) NewControllers ra bên ngoài để file khác có thể require() nó và sử dụng.

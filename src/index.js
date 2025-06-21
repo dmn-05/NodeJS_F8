@@ -11,7 +11,9 @@ const db = require('./config/db');
 //connect to DB
 db.connect();
 
-app.use(express.static(path.join(__dirname, 'public', 'css', 'img')));
+app.use(express.static(path.join(__dirname, 'public')));
+
+// app.use(express.static(path.join(__dirname, 'public', 'css', 'img')));
 
 app.use(methodOverride('_method'));
 

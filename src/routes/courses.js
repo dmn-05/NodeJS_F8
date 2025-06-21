@@ -10,6 +10,9 @@ const coursesControllers = require('../app/controllers/CoursesControllers');
 router.get('/:id/edit', coursesControllers.edit);
 
 // Khi /courses/:id sẽ chạy cái này
+router.delete('/:id', coursesControllers.destroy);
+
+// Khi /courses/:id sẽ chạy cái này
 router.put('/:id', coursesControllers.update);
 
 // Khi /courses/create sẽ chạy cái này

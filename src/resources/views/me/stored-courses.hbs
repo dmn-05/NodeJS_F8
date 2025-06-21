@@ -13,20 +13,61 @@
         </thead>
         <tbody>
             {{#each courses}}
-                <tr>
-                    <th scope='row'>{{sum @index 1}}</th>
-                    <td>{{this.name}}</td>
-                    <td>{{this.level}}</td>
-                    <td>{{this.createdAt}}</td>
-                    <td>
-                        <a
-                            href='/courses/{{this._id}}/edit'
-                            class='btn btn-link'
-                        >Sửa</a>
-                        <a href='' class='btn btn-link'>Xóa</a>
-                    </td>
-                </tr>
+            <tr>
+                <th scope='row'>{{sum @index 1}}</th>
+                <td>{{this.name}}</td>
+                <td>{{this.level}}</td>
+                <td>{{this.createdAt}}</td>
+                <td>
+                    <a href='/courses/{{this._id}}/edit' class='btn btn-link'>Sửa</a>
+                    <a href='' data-id='{{this._id}}' class='btn btn-link' data-bs-toggle='modal'
+                        data-bs-target='#exampleModal'>Xóa</a>
+                </td>
+            </tr>
             {{/each}}
         </tbody>
     </table>
 </div>
+
+{{! modal delete courses }}
+<div class='modal' tabindex='-1' id='exampleModal'>
+    <div class='modal-dialog'>
+        <div class='modal-content'>
+            <div class='modal-header'>
+                <h5 class='modal-title'>Thông báo</h5>
+                <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+            </div>
+            <div class='modal-body'>
+                <p>Bạn có muốn xóa khóa học này?</p>
+            </div>
+            <div class='modal-footer'>
+                <button type='button' id="btn-delete-course" class='btn btn-primary'>Xóa</button>
+                <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Hủy</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<form method='POST' name="delete-course-form"></form>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var courseId;
+        var deleteForm = document.forms['delete-course-form']
+
+        $('#exampleModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            courseId = button.data('id');
+        });
+
+        $('#exampleModal').on('shown.bs.modal', function () {
+            var btnDeleteCourse = document.getElementById('btn-delete-course');
+            btnDeleteCourse.onclick = function () {
+                deleteForm.action = '/courses/' + courseId + '?_method=DELETE'
+                deleteForm.submit();
+            };
+        });
+    });
+</script>
