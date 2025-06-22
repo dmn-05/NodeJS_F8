@@ -12,6 +12,12 @@ router.get('/:id/edit', coursesControllers.edit);
 // Khi /courses/:id sẽ chạy cái này
 router.delete('/:id', coursesControllers.destroy);
 
+// Khi /courses/:id/force sẽ chạy cái này
+router.delete('/:id/force', coursesControllers.forceDestroy);
+
+// Khi /courses/:id sẽ chạy cái này
+router.patch('/:id/restore', coursesControllers.restore);
+
 // Khi /courses/:id sẽ chạy cái này
 router.put('/:id', coursesControllers.update);
 
