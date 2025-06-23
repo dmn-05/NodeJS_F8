@@ -71,6 +71,27 @@ class CoursesControllers {
             .then(() => res.redirect('/me/trash/courses'))
             .catch(next);
     }
+
+    //[POST] courses/handle-form-action
+    handleFormAction(req, res, next) {
+        switch (req.body.action) {
+            case 'delete':
+                Course.delete({ _id: { $in: req.body.courseIds } })
+                    .then(() =>
+                        res.redirect(
+                            req.header('Referer') || '/me/stored/courses',
+                        ),
+                    )
+                    .catch(next);
+                break;
+            case 'test':
+                res.json(req.body);
+                break;
+            default:
+                res.json(req.body);
+                break;
+        }
+    }
 }
 
 //Xuất (export) NewControllers ra bên ngoài để file khác có thể require() nó và sử dụng.

@@ -12,8 +12,16 @@ const db = require('./config/db');
 db.connect();
 
 app.use(express.static(path.join(__dirname, 'public')));
-
 // app.use(express.static(path.join(__dirname, 'public', 'css', 'img')));
+
+// Redirect mọi request có đuôi '/' và là file tĩnh
+app.use((req, res, next) => {
+    if (req.path.match(/\.[a-z]+\/$/i)) {
+        const fixedUrl = req.path.replace(/\/+$/, '');
+        return res.redirect(fixedUrl);
+    }
+    next();
+});
 
 app.use(methodOverride('_method'));
 

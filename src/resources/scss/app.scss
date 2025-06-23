@@ -1,12 +1,10 @@
-@import 'variables';
+@use 'variables';
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-h1 {
-    color: $red-color;
-}
-h2 {
-    color: gray;
+.checkbox-select-all-options {
+    width: 160px;
+    margin: 0 16px;
 }

@@ -4,12 +4,9 @@
   box-sizing: border-box;
 }
 
-h1 {
-  color: red;
-}
-
-h2 {
-  color: gray;
+.checkbox-select-all-options {
+  width: 160px;
+  margin: 0 16px;
 }
 
 /*# sourceMappingURL=app.css.map */
