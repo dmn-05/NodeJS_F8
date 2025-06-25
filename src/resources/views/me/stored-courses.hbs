@@ -15,7 +15,7 @@
             <option value="test">test</option>
         </select>
         <div>
-            <button type="submit" class="btn btn-primary check-all-submit-btn disabled">Thực hiện</button>
+            <button type="submit" class="btn btn-primary check-all-submit-btn" disabled>Thực hiện</button>
         </div>
     </div>
 
@@ -23,9 +23,18 @@
         <thead>
             <tr>
                 <th scope='col' colspan="2">#</th>
-                <th scope='col'>Tên khóa học</th>
-                <th scope='col'>Trình độ</th>
-                <th scope='col'>Thời gian tạo</th>
+                <th scope='col'>
+                    Tên khóa học
+                    {{{sortable 'name' _sort}}}
+                </th>
+                <th scope='col'>
+                    Trình độ
+                    {{{sortable 'level' _sort}}}
+                </th>
+                <th scope='col'>
+                    Thời gian tạo
+                    {{{sortable 'createdAt' _sort}}}
+                </th>
                 <th scope='col'>Chức năng</th>
             </tr>
         </thead>
@@ -121,12 +130,11 @@
         function renderCheckAllSubmitBtn() {
             var CheckedCount = $('input[name="courseIds[]"]:checked').length;
             if (CheckedCount > 0) {
-                CheckAllSubmitBtn.removeClass('disabled');
+                CheckAllSubmitBtn.attr('disabled', false);
             }
             else {
-                CheckAllSubmitBtn.addClass('disabled');
+                CheckAllSubmitBtn.attr('disabled', true);
             }
         }
-        console.log(CheckAllSubmitBtn);
     });
 </script>

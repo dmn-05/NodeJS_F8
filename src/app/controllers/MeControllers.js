@@ -4,7 +4,15 @@ const { multipleMongooseToObject } = require('../../util/mongoose');
 //Tổng hợp các hàm có chức năng dùng site
 class MeControllers {
     storedCourses(req, res, next) {
-        Promise.all([Course.find(), Course.findWithDeleted({ deleted: true })])
+        let courseQuery = Course.find();
+
+        if ('_sort' in req.query) {
+            courseQuery.sort({
+                [req.query.column]: req.query.type,
+            });
+        }
+
+        Promise.all([courseQuery, Course.findWithDeleted({ deleted: true })])
             .then(([courses, deletedCourses]) =>
                 res.render('me/stored-courses', {
                     deleteCount: deletedCourses.length,
